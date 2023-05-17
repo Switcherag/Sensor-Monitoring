@@ -1,7 +1,8 @@
 version: '3'
 services:
   influxdb:
-    image: influxdb
+    image: influxdb:2.0
+    container_name: influxdb
     restart: always
     ports:
       - 8086:8086
@@ -12,6 +13,7 @@ services:
 
   grafana:
     image: grafana/grafana
+    container_name: grafana-server
     restart: always
     ports:
       - 3000:3000
