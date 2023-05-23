@@ -1,3 +1,3 @@
-docker run -it --rm --name sensor-monitoring    
-    python ./sensor-monitoring/script/influxdb.py
+docker run -it --rm --name influxd influxdb
+    python ./script/influxdb.py
 pause
