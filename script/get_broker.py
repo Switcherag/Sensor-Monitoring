@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
     # Subscribe to the "SensorPolytech" topic
-    client.subscribe("SensorPolytech")
+    client.subscribe("SensorPolytech/+")
 
 def on_message(client, userdata, msg):
     print("Topic: " + msg.topic + " - Message: " + str(msg.payload))
