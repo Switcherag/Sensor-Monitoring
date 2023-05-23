@@ -26,3 +26,8 @@ services:
       GF_SECURITY_ADMIN_PASSWORD: password
     depends_on:
       - influxdb
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    

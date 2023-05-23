@@ -1,3 +1,2 @@
-docker run -it --rm --name sensor-monitoring    
-    python ./script/main.py
+docker-compose up --build
 pause
