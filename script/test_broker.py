@@ -7,7 +7,7 @@ client = mqtt.Client()
 client.connect("test.mosquitto.org", 1883, 60)
 
 # Publish a message to the "SensorPolytech" topic
-topic = "SensorPolytech"
+topic = "SensorPolytech/Humidity_Sensor [%]"
 message = "Hello, MQTT!"
 client.publish(topic, message)
 
