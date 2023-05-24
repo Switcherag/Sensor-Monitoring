@@ -1,3 +1,2 @@
-docker run -it --rm --name influxd influxdb
-    python ./script/influxdb.py
+docker-compose up --build
 pause
