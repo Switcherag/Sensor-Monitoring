@@ -1,15 +1,17 @@
 version: '3'
 services:
   influxdb:
-    image: influxdb:2.0
-    container_name: influxdb
-    restart: always
+    image: influxdb:1.8
     ports:
-      - 8086:8086
+      - '8086:8086'
+    volumes:
+      - influxdb-storage:/mnt/shared/code/influxdb2
     environment:
-      INFLUXDB_DB: temperature
-      INFLUXDB_ADMIN_USER: user
-      INFLUXDB_ADMIN_PASSWORD: password
+      - INFLUXDB_DB=db0
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=Password1
+    networks:
+      - mynetwork
 
   grafana:
     image: grafana/grafana
@@ -26,3 +28,20 @@ services:
       GF_SECURITY_ADMIN_PASSWORD: password
     depends_on:
       - influxdb
+    networks:
+      - mynetwork
+
+  myapp:
+    build:
+      
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - influxdb
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+
+volumes:
+  influxdb-storage:
